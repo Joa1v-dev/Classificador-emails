@@ -39,7 +39,7 @@ input[type="file"] {
 
 /* Textarea */
 textarea {
-    width: 100%;
+    width: 90%;
     height: 150px;
     padding: 12px;
     font-size: 1rem;
