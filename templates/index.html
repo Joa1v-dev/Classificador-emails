@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classificador de Emails</title>
+    <title>Classificador de Emails com IA</title>
     <link rel="stylesheet" href="/static/style.css">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
 <div class="container">
-    <h1>Classificador de Emails com IA</h1>
+    <h1>📨Classificador de Emails com IA</h1>
 
     <form method="POST" enctype="multipart/form-data">
-        <label>🗒️ Upload (.txt ou .pdf)</label>
-        <input type="file" name="arquivo_pdf" />
+        <label>🗒️ Enviar arquivo (.txt ou .pdf)</label>
+        <input type="file" name="arquivo_pdf" accept=".txt,.pdf"/>
 
         <label>✉️ Ou cole o conteúdo do email aqui:</label>
         <textarea name="email_text" placeholder="Cole o conteúdo do email aqui..."></textarea>
 
-        <button type="submit">Classificar Email</button>    
+        <button type="submit">🔍 Classificar Email</button>    
     </form>
 
     {% if categoria %}

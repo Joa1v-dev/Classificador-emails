@@ -1,29 +1,103 @@
 body {
-    background: #f7f7ff;
+    background: #eef1f7;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 600px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #ccc;
+    width: 90%;
+    max-width: 650px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    color: #1f1f1f;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="text"],:houver {
+    border-color: #7293ff;
 }
 
 textarea {
     width: 100%;
-    height: 150px;
+    height: 160px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cfd4e0;
+    background: #fafbff;
+    resize: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4c77ff;
+    background: #fff;
 }
 
 button {
-    margin-top: 15px;
-    padding: 12px;
+    margin-top: 18px;
+    padding: 14px;
     width: 100%;
-    background: #2f65f7;
+    background: linear-gradient(135deg, #3b5bff, #2b47d9);
     color: white;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 16px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 4px 12px rgba(59, 91, 255, 0.3);
+}
+
+button:houver {
+    background: linear-gradient(135deg, #2b47d9, #2036b5);
+    transform: translateY(-2px);
+}
+
+.resultado {
+    margin-top: 35px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f8faff;
+    border-left: 5px solid #4c77ff;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+}
+
+.resultado h2 {
+    margin-top: 0;
+    color: #2d2d2d;
+}
+
+.resposta {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d7dbea;
+    margin-top: 8px;
+    white-space: pre-wrap;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
