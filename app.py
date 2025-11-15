@@ -44,7 +44,7 @@ def classificar_email(texto_email):
 
     # Segurança extra: captura independente do formato
     try:
-        conteudo = resposta.choices[0].message["content"]
+        conteudo = resposta.choices[0].message.content
         return conteudo
     except Exception as e:
         print("Erro ao ler resposta:", e)
