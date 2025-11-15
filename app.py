@@ -3,6 +3,9 @@ from PyPDF2 import PdfReader
 import openai
 import os
 
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
+
 app = Flask(__name__)
 
 #configuração da API
@@ -19,7 +22,18 @@ from openai import OpenAI
 client = OpenAI()
 
 def classificar_email(texto_email):
-    prompt = f"Classifique o email como SPAM ou NÃO SPAM:\n\n{texto_email}"
+    prompt = f"""
+    Classifique o email abaixo como PRODUTIVO ou IMPRODUTIVO.
+    Em seguida gere uma resposta automática apropriada.
+
+    Retorne exatamente neste formato:
+
+    Categoria: <PRODUTIVO/IMPRODUTIVO>
+    Resposta: <TEXTO DA RESPOSTA>
+
+    Email:
+    {texto_email}
+    """
 
     resposta = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -28,7 +42,13 @@ def classificar_email(texto_email):
         ]
     )
 
-    return resposta.choices[0].message.content
+    # Segurança extra: captura independente do formato
+    try:
+        conteudo = resposta.choices[0].message["content"]
+        return conteudo
+    except Exception as e:
+        print("Erro ao ler resposta:", e)
+        return "Categoria: Erro ao processar a resposta\nResposta: Não foi possível gerar resposta."
 
 
 @app.route("/", methods=["GET", "POST"])
