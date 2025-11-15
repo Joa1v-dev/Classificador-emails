@@ -1,15 +1,12 @@
 from flask import Flask, render_template, request
 from PyPDF2 import PdfReader
-import openai
+from openai import OpenAI
 import os
 
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-
+# inicializa o client usando a variável de ambiente
+client = OpenAI()
 
 app = Flask(__name__)
-
-#configuração da API
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def extrair_texto_pdf(arquivo_pdf):
     reader = PdfReader(arquivo_pdf)
@@ -17,9 +14,6 @@ def extrair_texto_pdf(arquivo_pdf):
     for page in reader.pages:
         texto += page.extract_text() + "\n"
     return texto
-
-from openai import OpenAI
-client = OpenAI()
 
 def classificar_email(texto_email):
     prompt = f"""
