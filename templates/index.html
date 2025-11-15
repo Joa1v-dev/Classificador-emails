@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador de Emails</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Classificador de Emails com IA</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>🗒️ Upload (.txt ou .pdf)</label>
+        <input type="file" name="arquivo_pdf" />
+
+        <label>✉️ Ou cole o conteúdo do email aqui:</label>
+        <textarea name="email_text" placeholder="Cole o conteúdo do email aqui..."></textarea>
+
+        <button type="submit">Classificar Email</button>    
+    </form>
+
+    {% if categoria %}
+    <div class="resultado">
+        <h2>Resultado da Classificação:</h2>
+        <p><strong>Categoria:</strong> {{ categoria }}</p>
+        <p><strong>Resposta automática:</strong></p>
+        <div class="resposta">{{ resposta }}</div>
+    </div>
+    {% endif %}
+</div>
+    
+</body>
+</html>
