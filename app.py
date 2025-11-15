@@ -23,32 +23,38 @@ client = OpenAI()
 
 def classificar_email(texto_email):
     prompt = f"""
-    Classifique o email abaixo como PRODUTIVO ou IMPRODUTIVO.
-    Em seguida gere uma resposta automática apropriada.
+Você é um assistente que classifica emails como PRODUTIVO ou IMPRODUTIVO e gera uma resposta apropriada.
+Use sempre o seguinte formato:
 
-    Retorne exatamente neste formato:
+Categoria: <PRODUTIVO/IMPRODUTIVO>
+Resposta: <texto da resposta>
 
-    Categoria: <PRODUTIVO/IMPRODUTIVO>
-    Resposta: <TEXTO DA RESPOSTA>
+Aqui estão alguns exemplos:
 
-    Email:
-    {texto_email}
-    """
+Email: "Gostaria de saber qual o horário de funcionamento da empresa."
+Categoria: PRODUTIVO
+Resposta: Olá! Nosso horário de funcionamento é de segunda a sexta, das 8h às 17h. Posso te ajudar em mais alguma coisa?
 
+Email: "Meu pedido chegou danificado, preciso de uma solução urgente."
+Categoria: IMPRODUTIVO
+Resposta: Pedimos desculpas pelo transtorno! Por favor, envie uma foto do item danificado para que possamos resolver.
+
+Agora classifique o seguinte email:
+
+Email: "{texto_email}"
+"""
     resposta = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
+        messages=[{"role": "user", "content": prompt}]
     )
 
-    # Segurança extra: captura independente do formato
     try:
         conteudo = resposta.choices[0].message.content
         return conteudo
     except Exception as e:
         print("Erro ao ler resposta:", e)
         return "Categoria: Erro ao processar a resposta\nResposta: Não foi possível gerar resposta."
+
 
 
 @app.route("/", methods=["GET", "POST"])
