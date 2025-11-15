@@ -17,23 +17,29 @@ def extrair_texto_pdf(arquivo_pdf):
 
 def classificar_email(texto_email):
     prompt = f"""
-    Classifique o email abaixo como PRODUTIVO ou IMPRODUTIVO.
-    Em seguida gere uma resposta automática apropriada.
+Você é um assistente virtual para uma grande empresa financeira que recebe muitos emails diariamente. 
+Seu objetivo é **automatizar a leitura, classificação e sugestão de respostas**.
 
-    Retorne exatamente neste formato:
+Instruções:
+1. Classifique cada email em PRODUTIVO ou IMPRODUTIVO.
+   - PRODUTIVO: solicitações, envio de arquivos, dúvidas importantes.
+   - IMPRODUTIVO: felicitações, comentários irrelevantes, perguntas sem importância.
+2. Gere uma resposta automática apropriada.
+   - Tom cordial, profissional e objetivo.
+   - Para emails improdutivos, responda educadamente, reconhecendo a mensagem.
 
-    Categoria: <PRODUTIVO/IMPRODUTIVO>
-    Resposta: <TEXTO DA RESPOSTA>
+Retorne exatamente neste formato:
 
-    Email:
-    {texto_email}
-    """
+Categoria: <PRODUTIVO/IMPRODUTIVO>
+Resposta: <TEXTO DA RESPOSTA>
+
+Email:
+"{texto_email}"
+"""
 
     resposta = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
+        messages=[{"role": "user", "content": prompt}]
     )
 
     try:
@@ -42,6 +48,7 @@ def classificar_email(texto_email):
     except Exception as e:
         print("Erro ao ler resposta:", e)
         return "Categoria: Erro ao processar a resposta\nResposta: Não foi possível gerar resposta."
+
 
 
 
