@@ -15,23 +15,21 @@ def extrair_texto_pdf(arquivo_pdf):
         texto += page.extract_text() + "\n"
     return texto
 
-def classificar_email(text):
-    prompt = f"""Classifique o email abaixo como PRODUTIVO ou IMPRODUTIVO.
-    Depois gere uma resposta automática adequada para o email.
+from openai import OpenAI
+client = OpenAI()
 
-    Email: 
-    {text}
+def classificar_email(texto_email):
+    prompt = f"Classifique o email como SPAM ou NÃO SPAM:\n\n{texto_email}"
 
-    Reponda no formato:
-    Categoria: <Produtivo/Improdutivo>
-    Resposta: <Resposta automática>
-    """
-    resposta = openai.Completion.create(
+    resposta = client.chat.completions.create(
         model="gpt-4o-mini",
-        message=[{"role": "user", "content": prompt}]
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
 
-    return resposta.choices[0].message['content'] 
+    return resposta.choices[0].message.content
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
