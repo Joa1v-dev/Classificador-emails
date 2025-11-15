@@ -70,7 +70,7 @@ export OPENAI_API_KEY="sua chave"  # Linux/macOS
 setx OPENAI_API_KEY "sua chave"    # Windows
 ```
 4. Link para criar sua chave da OpenAI:
-[Criar sua chave OpenAI](https://platform.openai.com/settings/proj_8mfSLyJcEgdMGOW3tGE2LAQm/api-keys)
+[Criar sua chave OpenAI](https://platform.openai.com/settings/proj_8mfSLyJcEgdMGOW3tGE2LAQm/api-keys)<br>
 
 5. Execute a aplicação:
 ```bash
@@ -78,6 +78,7 @@ python app.py
 ```
 
 6. Acesse em [http://127.0.9.1:5000](http://127.0.9.1:5000)
+
 **cmd** <br><br>
 <img src="static/img/run-cmd.png" alt="cmd" width="400"/> <br>
 
@@ -105,5 +106,10 @@ python app.py
 
 **Teste 2**<br><br>
 <img src="static/img/teste-2.png" alt="Teste 2" width="400"/> <br>
+
+---
+
+## 👤 Autor
+João Victor Alexandre Oliveira
 
 ---
