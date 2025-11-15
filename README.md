@@ -29,18 +29,18 @@
 ## 📁 Estrutura do Projeto 
 
 /classificador-email-ia/ <br>
-├── static<br>
+│── static<br>
 │   ├── style.css<br>
-|   └── img/<br>
+│   └── img/<br>
 │       └── tela-principal-email.png<br>
 │       └── teste-1.png<br>
 │       └── teste-2.png<br>
 │       └── run-cmd.png<br>
-├── templates/<br>
-│   ├── index.html<br>
-├── app.py<br>
-├── README.md<br>
-├── requirements.txt<br>
+│── templates/<br>
+│   └── index.html<br>
+│── app.py<br>
+│── README.md<br>
+│── requirements.txt<br>
 
 ---
 
