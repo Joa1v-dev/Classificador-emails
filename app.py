@@ -64,6 +64,7 @@ Email: "{texto_email}"
         return "Categoria: Erro ao processar a resposta\nResposta: Não foi possível gerar resposta."
 
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     categoria = ""
